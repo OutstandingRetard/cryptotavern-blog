@@ -1,0 +1,4 @@
+baseURL = 'https://cryptotavern.netlify.app/'
+languageCode = 'en-us'
+title = 'Crypto Tavern - AI Crypto News'
+theme = 'ananke'
