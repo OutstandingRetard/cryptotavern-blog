@@ -2,3 +2,13 @@ baseURL = "https://yourdomain.com/"
 languageCode = "en-us"
 title = "Crypto News Blog"
 theme = "ananke"
+
+[params]
+  site_author = "CryptoTavern Bot"
+  description = "Daily crypto & AI news updates for 2025 trends"
+  favicon = ""  # Add later if image in static/
+  background_image = ""  # Optional for hero
+  show_featured_image = true  # Shows post images (bot can add later)
+  show_author_byline = true
+  show_post_date = true
+  show_comments = false  # Disable for now
