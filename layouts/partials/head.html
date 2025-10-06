@@ -1,6 +1,9 @@
-<head>
-{{ partial "head" . }}
-
+<meta charset="utf-8">  
+<meta http-equiv="X-UA-Compatible" content="IE=edge">  
+<title>{{ block "title" . }}{{ .Title }}{{ end }}</title>  
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .Params.description}}{{ .Params.description }}{{else}}{{ .Summary }}{{ end }}{{ end }}">  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+{{ hugo.Generator }}  
 <!-- Google tag (gtag.js) -->  
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DM704YJT90"></script>  
 <script>  
@@ -9,4 +12,10 @@
   gtag('js', new Date());  
   gtag('config', 'G-DM704YJT90');  
 </script>  
-</head>)
+{{ $styles := resources.Get "sass/main.scss" | toCSS | minify }}  
+<link href="{{ $styles.RelPermalink }}" rel="stylesheet">  
+{{ range .AlternativeOutputFormats -}}  
+{{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink .Name | safeHTML }}  
+{{ end -}}  
+{{ template "_internal/opengraph.html" . }}  
+{{ template "_internal/twitter_cards.html" . }}  
